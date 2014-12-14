@@ -3,6 +3,12 @@ app-notify
 
 Send SMS and email notifications from within your node.js app
 
+# install
+
+    npm install app-notify
+    
+    var notify = require('app-notify');
+
 # usage (promises)
 
 Send an email message:
