@@ -1,0 +1,27 @@
+{
+  "name": "app-notify",
+  "version": "1.0.0",
+  "description": "Send SMS and email notifications from within your node.js app",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chovy/app-notify"
+  },
+  "keywords": [
+    "notifications",
+    "notify",
+    "application",
+    "email",
+    "sms",
+    "node"
+  ],
+  "author": "Anthony Ettinger <anthony@chovy.com> (http://chovy.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chovy/app-notify/issues"
+  },
+  "homepage": "https://github.com/chovy/app-notify"
+}
