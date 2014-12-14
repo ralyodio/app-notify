@@ -17,8 +17,8 @@ Send an email message:
     
     //setup email headers
     var email = {
-        to: user@example.com,
-        from: sender@example.com'
+        to: 'user@example.com',
+        from: 'sender@example.com'
     };
 
     var notify = require('app-notify');
@@ -43,10 +43,10 @@ Send an SMS message
 
     //setup sms configuration
     var sms = {
-        sid: twilio-sid-id,
-        auth: twilio-auth-id,
-        to: xxx-xxx-xxxx, //recipient
-        from: yyy-yyy-yyyy //your twilio assigned phone number
+        sid: 'twilio-sid-id',
+        auth: 'twilio-auth-id',
+        to: 'xxx-xxx-xxxx', //recipient
+        from: 'yyy-yyy-yyyy' //your twilio assigned phone number
     };
     
     var notify = require('app-notify');
