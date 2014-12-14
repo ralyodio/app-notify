@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/chovy/app-notify",
   "dependencies": {
+    "async": "^0.9.0",
+    "lodash": "^2.4.1",
     "nodemailer": "^1.3.0",
     "q": "^1.1.2",
     "twilio": "^1.10.0"
