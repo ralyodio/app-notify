@@ -6,5 +6,9 @@ describe('SMS', function(){
 		it('should be defined', function(){
 			expect(notify.sms).to.be.defined;
 		});
+
+    //it('should set config', function(){
+    //
+    //});
 	});
 });
