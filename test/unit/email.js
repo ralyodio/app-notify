@@ -1,6 +1,6 @@
 var notify = require('../../index');
 var expect = require('chai').expect;
-var cfg = require('./../config.js');
+var cfg = require('./../../config');
 
 describe('Email', function(){
 	describe('email', function(){
