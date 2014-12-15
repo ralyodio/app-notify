@@ -1,4 +1,4 @@
 node_modules
 .idea
 config.json
-test/config.json
+config.js

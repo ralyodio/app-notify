@@ -1,4 +1,4 @@
-var notify = require('../');
+var notify = require('../../index');
 var expect = require('chai').expect;
 
 describe('All', function(){
