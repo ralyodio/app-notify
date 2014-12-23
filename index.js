@@ -6,10 +6,26 @@ var q = require('q');
 
 var cfg = {};
 
+function respondWithError(err, method){
+  if ( typeof method === 'function' ) {
+    return method(err);
+  }
+
+  return method.reject(err);
+}
+
+function respondWithSuccess(data, method){
+  if ( typeof method === 'function' ){
+    return method(null, data);
+  }
+
+  return method.resolve(data);
+}
+
 function send(opts, callback){
   opts = _.extend(cfg, opts);
 
-  var def = !cb ? q.defer() : null;
+  var method = !callback ? q.defer() : callback;
 
   async.parallel([
     //sms
@@ -23,7 +39,7 @@ function send(opts, callback){
         });
     },
     //email
-    function(){
+    function(cb){
       email.send(opts)
         .then(function(data){
           cb(null, data);
@@ -34,21 +50,18 @@ function send(opts, callback){
     }
   ], function(err, data){
     if ( err ) {
-      if ( callback ) return callback(err);
-      return def.reject(err);
+      return respondWithError(err, method);
     }
 
-    if ( callback ) return callback(null, data);
-    return def.resolve(data);
+    return respondWithSuccess(data, method);
   });
 
-  if ( def ) {
-    return def.promise;
+  if ( method.promise ) {
+    return method.promise;
   }
 }
 
-
-exports.cfg;
-exports.sms;
-exports.email;
-exports.send;
+exports.cfg = cfg;
+exports.sms = sms;
+exports.email = email;
+exports.send = send;
