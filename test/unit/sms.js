@@ -1,21 +1,24 @@
-var notify = require('../../index');
+var Notify = require('../../index');
 var expect = require('chai').expect;
-var cfg = require('./../config');
+var config = require('./../config');
+var _ = require('lodash');
 
 describe('SMS', function(){
+  var notify;
+
+  beforeEach(function() {
+    var cfg = _.cloneDeep(config);
+    notify = new Notify(cfg);
+  });
+
   it('should be defined', function(){
     expect(notify.sms).to.be.defined;
   });
 
   describe('config', function(){
-    beforeEach(function() {
-      notify.cfg = cfg;
-    });
 
     it('should set config', function(){
-      notify.cfg = cfg;
-
-      expect(notify.cfg).to.be.equal(cfg);
+      expect(JSON.stringify(notify.cfg)).to.be.equal(JSON.stringify(config));
     });
 
     it('should disable sms', function(){
@@ -32,14 +35,11 @@ describe('SMS', function(){
 	});
 
   describe('send sms', function() {
-    beforeEach(function() {
-      notify.cfg = cfg;
-    });
-
-    it('should fail on empty message', function(){
+    it('should fail on empty message', function(done){
       notify.sms.send({}, function(err, data){
         expect(err).to.be.defined;
         expect(data).to.be.undefined;
+        done();
       });
     });
 

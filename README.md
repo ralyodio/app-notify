@@ -7,14 +7,18 @@ Send SMS and email notifications from within your node.js app
 
     npm install app-notify
     
-    var notify = require('app-notify');
+    var Notify = require('app-notify');
+    var cfg = {...};
+    var notify = new Notify(cfg);
 
 # usage (promises)
 
 Send an email message:
 
+    var cfg = {};
+
     //setup smtp server
-    var smtp = {
+    cfg.smtp = {
         host: xxx,
         user: user,
         pass: pass,
@@ -22,16 +26,13 @@ Send an email message:
     };
     
     //setup email headers
-    var email = {
+    cfg.email = {
         to: 'user@example.com',
         from: 'sender@example.com'
     };
 
-    var notify = require('app-notify');
-
-    //set your configuration
-    notify.cfg.email = email;
-    notify.cfg.smtp = smtp;
+    var Notify = require('app-notify');
+    var notify = new Notify(cfg);
     
     //send an email
     notify.email({
@@ -47,18 +48,18 @@ Send an email message:
 
 Send an SMS message    
 
+    var cfg = {};
+
     //setup sms configuration
-    var sms = {
+    cfg.sms = {
         sid: 'twilio-sid-id',
         auth: 'twilio-auth-id',
         to: 'xxx-xxx-xxxx', //recipient
         from: 'yyy-yyy-yyyy' //your twilio assigned phone number
     };
     
-    var notify = require('app-notify');
-
-    //set your configuration
-    notify.cfg.sms = sms;
+    var Notify = require('app-notify');
+    var notify = new Notify(cfg);
 
     notify.sms({
         message: 'Hello world'
@@ -72,12 +73,24 @@ Send an SMS message
 
 Send to whichever services we have enabled (both sms and email):
 
-    var notify = require('app-notify');
+    var cfg = {};
 
-    //set your configuration
-    notify.cfg.email = email;
-    notify.cfg.smtp = smtp;
-    notify.cfg.sms = sms;
+    //setup smtp server
+    cfg.smtp = {
+        host: xxx,
+        user: user,
+        pass: pass,
+        port: port
+    };
+    
+    //setup email headers
+    cfg.email = {
+        to: 'user@example.com',
+        from: 'sender@example.com'
+    };
+
+    var Notify = require('app-notify');
+    var notify = new Notify(cfg);
 
     //sends both
     notify.send({
@@ -85,6 +98,7 @@ Send to whichever services we have enabled (both sms and email):
         message: 'Hello world'
     });
 
+    //disable email
     notify.cfg.email.disabled = true;
     
     //sends only sms

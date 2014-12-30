@@ -2,10 +2,12 @@
 
 - test enable/disable flag in `notify.send()`
 - test promises work
-- test callbacks work
-- sample calls
+- mock data in api calls
 
 ## done
+
+- sample calls
+- test callbacks work
 - move config to tests
 - remove config requirement in modules
 - promises supported
@@ -13,4 +15,4 @@
 
 ## backlog
 
-- add support for phone calls
+- add support for `.phone()` calls

@@ -1,11 +1,15 @@
-var notify = require('../../index');
+var Notify = require('../../index');
 var expect = require('chai').expect;
-var cfg = require('./../config');
+var config = require('../config');
+var _ = require('lodash');
 
 describe('All', function(){
+  var notify;
+
   describe('send', function(){
     beforeEach(function() {
-      notify.cfg = cfg;
+      var cfg = _.cloneDeep(config);
+      notify = new Notify(cfg);
     });
 
     it('should be defined', function(){
@@ -20,14 +24,11 @@ describe('All', function(){
         expect(err).to.be.null;
         expect(data).to.be.defined;
         expect(data).to.have.length(2);
-
         done();
       });
     });
 
     it('should send only email', function(done){
-      var sms = notify.cfg.sms;
-
       delete notify.cfg.sms;
 
       notify.send({
@@ -37,16 +38,11 @@ describe('All', function(){
         expect(err).to.be.null;
         expect(data).to.be.defined;
         expect(data).to.have.length(1);
-        notify.cfg.sms = sms; //re-apply original config
-
         done();
       });
     });
 
     it('should send only sms', function(done){
-      var email = notify.cfg.email;
-      var smtp = notify.cfg.smtp;
-
       delete notify.cfg.email;
       delete notify.cfg.smtp;
 
@@ -57,14 +53,10 @@ describe('All', function(){
         expect(err).to.be.null;
         expect(data).to.be.defined;
         expect(data).to.have.length(1);
-        //re-apply original config
-        notify.cfg.email = email;
-        notify.cfg.smtp = smtp;
-
         done();
       });
-    })
+    });
 
-    //todo test disabled flag
+    //todo test disabled flags
   });
 });
