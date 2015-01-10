@@ -5,106 +5,115 @@ Send SMS and email notifications from within your node.js app
 
 # install
 
-    npm install app-notify
-    
-    var Notify = require('app-notify');
-    var cfg = {...};
-    var notify = new Notify(cfg);
+```shell
+npm install app-notify
+```
 
+```javascript
+var Notify = require('app-notify');
+var cfg = {...};
+var notify = new Notify(cfg);
+```
 # usage (promises)
 
-Send an email message:
+### Send an email message:
 
-    var cfg = {};
+```javascript
+var cfg = {};
 
-    //setup smtp server
-    cfg.smtp = {
-        host: xxx,
-        user: user,
-        pass: pass,
-        port: port
-    };
-    
-    //setup email headers
-    cfg.email = {
-        to: 'user@example.com',
-        from: 'sender@example.com'
-    };
+//setup smtp server
+cfg.smtp = {
+    host: xxx,
+    user: user,
+    pass: pass,
+    port: port
+};
 
-    var Notify = require('app-notify');
-    var notify = new Notify(cfg);
-    
-    //send an email
-    notify.email({
-        subject: 'This is a test',
-        message: 'Hello world!'
-    })
-    .then(function(data){
-        console.log(data);
-    })
-    .catch(function(err){
-        console.error(err);
-    });
+//setup email headers
+cfg.email = {
+    to: 'user@example.com',
+    from: 'sender@example.com'
+};
 
-Send an SMS message    
+var Notify = require('app-notify');
+var notify = new Notify(cfg);
 
-    var cfg = {};
+//send an email
+notify.email({
+    subject: 'This is a test',
+    message: 'Hello world!'
+})
+.then(function(data){
+    console.log(data);
+})
+.catch(function(err){
+    console.error(err);
+});
+```
 
-    //setup sms configuration
-    cfg.sms = {
-        sid: 'twilio-sid-id',
-        auth: 'twilio-auth-id',
-        to: 'xxx-xxx-xxxx', //recipient
-        from: 'yyy-yyy-yyyy' //your twilio assigned phone number
-    };
-    
-    var Notify = require('app-notify');
-    var notify = new Notify(cfg);
+### Send an SMS message    
 
-    notify.sms({
-        message: 'Hello world'
-    })
-    .then(function(data){
-        console.log(data);
-    })
-    .catch(function(err){
-        console.error(err);
-    });
+```javascript
+var cfg = {};
 
-Send to whichever services we have enabled (both sms and email):
+//setup sms configuration
+cfg.sms = {
+    sid: 'twilio-sid-id',
+    auth: 'twilio-auth-id',
+    to: 'xxx-xxx-xxxx', //recipient
+    from: 'yyy-yyy-yyyy' //your twilio assigned phone number
+};
 
-    var cfg = {};
+var Notify = require('app-notify');
+var notify = new Notify(cfg);
 
-    //setup smtp server
-    cfg.smtp = {
-        host: xxx,
-        user: user,
-        pass: pass,
-        port: port
-    };
-    
-    //setup email headers
-    cfg.email = {
-        to: 'user@example.com',
-        from: 'sender@example.com'
-    };
+notify.sms({
+    message: 'Hello world'
+})
+.then(function(data){
+    console.log(data);
+})
+.catch(function(err){
+    console.error(err);
+});
+```
 
-    var Notify = require('app-notify');
-    var notify = new Notify(cfg);
+### Send to whichever services we have enabled (both sms and email):
 
-    //sends both
-    notify.send({
-        subject: 'This is a test',
-        message: 'Hello world'
-    });
+```javascript
+var cfg = {};
 
-    //disable email
-    notify.cfg.email.disabled = true;
-    
-    //sends only sms
-    notify.send({
-        message: 'Hello world',
-    });
+//setup smtp server
+cfg.smtp = {
+    host: xxx,
+    user: user,
+    pass: pass,
+    port: port
+};
+
+//setup email headers
+cfg.email = {
+    to: 'user@example.com',
+    from: 'sender@example.com'
+};
+
+var Notify = require('app-notify');
+var notify = new Notify(cfg);
+
+//sends both
+notify.send({
+    subject: 'This is a test',
+    message: 'Hello world'
+});
+
+//disable email
+notify.cfg.email.disabled = true;
+
+//sends only sms
+notify.send({
+    message: 'Hello world',
+});
+```
 
 # usage (callbacks)
 
@@ -112,4 +121,6 @@ app-notify can be used with callbacks too!
 
 # run tests
 
-    gulp test
+```shell
+gulp test
+```
