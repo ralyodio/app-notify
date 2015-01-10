@@ -14,6 +14,7 @@ var Notify = require('app-notify');
 var cfg = {...};
 var notify = new Notify(cfg);
 ```
+
 # usage (promises)
 
 ### Send an email message:
