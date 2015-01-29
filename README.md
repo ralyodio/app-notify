@@ -125,3 +125,7 @@ app-notify can be used with callbacks too!
 ```shell
 gulp test
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/chovy/app-notify/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
