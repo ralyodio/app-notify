@@ -1,7 +1,7 @@
 app-notify
 ==========
 
-Send SMS and email notifications from within your node.js app
+Send Twilio SMS and SMTP email notifications from within your node.js app
 
 # install
 
@@ -10,9 +10,9 @@ npm install app-notify
 ```
 
 ```javascript
-var Notify = require('app-notify');
-var cfg = {...};
-var notify = new Notify(cfg);
+const Notify = require('app-notify');
+const cfg = {...};
+const notify = new Notify(cfg);
 ```
 
 # usage (promises)
@@ -20,7 +20,7 @@ var notify = new Notify(cfg);
 ### Send an email message:
 
 ```javascript
-var cfg = {};
+const cfg = {};
 
 //setup smtp server
 cfg.smtp = {
@@ -36,8 +36,8 @@ cfg.email = {
     from: 'sender@example.com'
 };
 
-var Notify = require('app-notify');
-var notify = new Notify(cfg);
+const Notify = require('app-notify');
+const notify = new Notify(cfg);
 
 //send an email
 notify.email({
@@ -55,7 +55,7 @@ notify.email({
 ### Send an SMS message    
 
 ```javascript
-var cfg = {};
+const cfg = {};
 
 //setup sms configuration
 cfg.sms = {
@@ -65,8 +65,8 @@ cfg.sms = {
     from: 'yyy-yyy-yyyy' //your twilio assigned phone number
 };
 
-var Notify = require('app-notify');
-var notify = new Notify(cfg);
+const Notify = require('app-notify');
+const notify = new Notify(cfg);
 
 notify.sms({
     message: 'Hello world'
@@ -82,7 +82,7 @@ notify.sms({
 ### Send to whichever services we have enabled (both sms and email):
 
 ```javascript
-var cfg = {};
+const cfg = {};
 
 //setup smtp server
 cfg.smtp = {
@@ -98,8 +98,8 @@ cfg.email = {
     from: 'sender@example.com'
 };
 
-var Notify = require('app-notify');
-var notify = new Notify(cfg);
+const Notify = require('app-notify');
+const notify = new Notify(cfg);
 
 //sends both
 notify.send({
@@ -125,7 +125,3 @@ app-notify can be used with callbacks too!
 ```shell
 gulp test
 ```
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/chovy/app-notify/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-

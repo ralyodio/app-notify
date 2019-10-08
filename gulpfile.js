@@ -1,5 +1,5 @@
-var gulp = require('gulp');
-var mocha = require('gulp-mocha');
+const gulp = require('gulp');
+const mocha = require('gulp-mocha');
 
 gulp.task('default', ['test']);
 

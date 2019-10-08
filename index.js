@@ -1,8 +1,8 @@
-var Sms = require('./lib/sms');
-var Email = require('./lib/email');
-var _ = require('lodash');
-var async = require('async');
-var q = require('q');
+const Sms = require('./lib/sms');
+const Email = require('./lib/email');
+const _ = require('lodash');
+const async = require('async');
+const q = require('q');
 
 function Notify(cfg){
   if (!(this instanceof Notify)) {
@@ -14,7 +14,7 @@ function Notify(cfg){
   this.sms = new Sms(this.cfg);
 }
 
-var notify = {
+const notify = {
   respondWithError: function(err, method){
     if ( typeof method === 'function' ) {
       return method(err);
@@ -34,7 +34,7 @@ var notify = {
   send: function send(opts, callback){
     opts = _.extend(this.cfg, opts);
 
-    var method = !callback ? q.defer() : callback;
+    const method = !callback ? q.defer() : callback;
 
     async.parallel([
       //sms

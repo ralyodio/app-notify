@@ -1,14 +1,14 @@
-var Notify = require('../../index');
-var expect = require('chai').expect;
-var config = require('./../config');
-var _ = require('lodash');
+const Notify = require('../../index');
+const expect = require('chai').expect;
+const config = require('./../config');
+const _ = require('lodash');
 
 describe('Email', function(){
 	describe('email', function(){
-    var notify;
+    let notify;
 
     beforeEach(function() {
-      var cfg = _.cloneDeep(config);
+      const cfg = _.cloneDeep(config);
       notify = new Notify(cfg);
     });
 
