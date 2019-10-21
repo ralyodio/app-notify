@@ -1,6 +1,6 @@
 {
   "name": "app-notify",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Send SMS and email notifications from within your node.js app",
   "main": "index.js",
   "scripts": {
