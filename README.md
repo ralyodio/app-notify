@@ -40,7 +40,7 @@ const Notify = require('app-notify');
 const notify = new Notify(cfg);
 
 //send an email
-notify.email({
+notify.email.send({
     subject: 'This is a test',
     message: 'Hello world!'
 })
@@ -68,7 +68,7 @@ cfg.sms = {
 const Notify = require('app-notify');
 const notify = new Notify(cfg);
 
-notify.sms({
+notify.sms.send({
     message: 'Hello world'
 })
 .then(function(data){
